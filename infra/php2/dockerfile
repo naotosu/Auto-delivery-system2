@@ -11,7 +11,6 @@ RUN apt-get update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath
-  #tar -cvf laravel.tar laravel
 
 COPY ./infra/php2/php.ini /usr/local/etc/php/php.ini
 COPY ./laravel work
