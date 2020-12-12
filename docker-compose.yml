@@ -1,11 +1,16 @@
 version: "3"
 services:
   app:
-    build: ./infra/php    
+    build:
+      context: .
+      dockerfile: ./infra/php2/dockerfile
     volumes:
       - ./laravel:/work
 
   web:
+    build:
+      context: .
+      dockerfile: ./infra/nginx/dockerfile
     image: nginx:1.18-alpine
     ports:
       - 80:80
