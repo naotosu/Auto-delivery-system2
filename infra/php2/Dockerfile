@@ -14,7 +14,8 @@ RUN apt-get update && \
 
 COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./php.ini /usr/local/etc/php/php.ini
-COPY ./laravel work
+COPY .../laravel work
+# TODO コンテキスト外のlaravelアプリをCOPYしたい
 
 WORKDIR /work
 
