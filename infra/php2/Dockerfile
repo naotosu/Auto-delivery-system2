@@ -12,10 +12,8 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath
 
-COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
-COPY ./php.ini /usr/local/etc/php/php.ini
-COPY .../laravel work
-# TODO コンテキスト外のlaravelアプリをCOPYしたい
+COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+COPY ./infra/php2/php.ini /usr/local/etc/php/php.ini
+COPY laravel/ /work/
 
 WORKDIR /work
-
