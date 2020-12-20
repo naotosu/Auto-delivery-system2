@@ -5,7 +5,8 @@ SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 ENV TZ=UTC
 
 RUN apk update && \
-  apk add --update --no-cache --virtual=.build-dependencies g++
+  apk add --update --no-cache --virtual=.build-dependencies g++ && \
+  mkdir /var/run/php-fpm
 
 # node command
 COPY --from=node /usr/local/bin /usr/local/bin
