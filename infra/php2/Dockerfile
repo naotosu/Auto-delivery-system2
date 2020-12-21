@@ -9,7 +9,7 @@ ENV PHP_INI_DIR /usr/local/etc/php
 COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && \
-  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev && \
+  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev vim && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath
@@ -17,14 +17,12 @@ RUN apt-get update && \
 RUN mkdir /var/run/php-fpm && \
     chmod 776 /var/run/php-fpm
 
-RUN apt-get update && \
-    apt-get install -y vim　&& \
-    chmod -R 766 /work/storage && \
-    chmod -R 766 /work
-
 COPY ./infra/php2/php74-php-fpm.conf /usr/lib/tmpfiles.d/php74-php-fpm.conf
 COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./infra/php2/php.ini /usr/local/etc/php/php.ini
 COPY laravel/ /work/
+
+RUN chmod -R 766 /work
+RUN chmod -R 766 /work/storage
 
 WORKDIR /work
