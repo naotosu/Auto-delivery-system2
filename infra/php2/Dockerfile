@@ -17,13 +17,12 @@ RUN apt-get update && \
 RUN mkdir /var/run/php-fpm && \
     chmod 776 /var/run/php-fpm
 
-COPY ./infra/php2/php74-php-fpm.conf /usr/lib/tmpfiles.d/php74-php-fpm.conf
 COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./infra/php2/php.ini /usr/local/etc/php/php.ini
-COPY laravel/ /work/
+COPY laravel/ /work/laravel/
 
-RUN chmod -R 766 /work
-RUN chmod -R 766 /work/storage
-RUN chmod -R 766 /work/public
+RUN chmod -R 755 /work/laravel
+RUN chmod -R 755 /work/laravel/storage
+RUN chmod -R 755 /work/laravel/public
 
-WORKDIR /work
+WORKDIR /work/laravel

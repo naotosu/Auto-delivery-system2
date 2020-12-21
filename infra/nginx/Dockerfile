@@ -16,8 +16,8 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /opt /opt
 # nginx config file
 COPY ./infra/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY laravel/ /work/
+COPY laravel/ /work/laravel/
 
-WORKDIR /work
+WORKDIR /work/laravel
 
 EXPOSE 80
