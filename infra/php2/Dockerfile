@@ -24,5 +24,6 @@ COPY laravel/ /work/
 
 RUN chmod -R 766 /work
 RUN chmod -R 766 /work/storage
+RUN chmod -R 766 /work/public
 
 WORKDIR /work
