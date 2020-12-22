@@ -4,22 +4,25 @@ SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
   COMPOSER_HOME=/composer
 
-ENV PHP_INI_DIR /usr/local/etc/php
-
-COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && \
-  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev vim && \
+  apt-get -y install git libicu-dev libonig-dev libzip-dev unzip locales && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
-  docker-php-ext-install intl pdo_mysql zip bcmath
+  locale-gen en_US.UTF-8 && \
+  localedef -f UTF-8 -i en_US en_US.UTF-8 && \
+  mkdir /var/run/php-fpm && \
+  mkdir /var/log/php && \
+  docker-php-ext-install intl pdo_mysql zip bcmath && \
+  composer config -g process-timeout 3600 && \
+  composer config -g repos.packagist composer https://packagist.jp
 
-RUN mkdir /var/run/php-fpm && \
-    chmod 776 /var/run/php-fpm
+RUN chmod 776 /var/run/php-fpm
 
 COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./infra/php2/php.ini /usr/local/etc/php/php.ini
-COPY laravel/ /work/laravel/
+COPY ./laravel/ /work/laravel
 
 RUN chmod -R 755 /work/laravel
 RUN chmod -R 755 /work/laravel/storage
