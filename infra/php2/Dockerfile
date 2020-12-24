@@ -1,8 +1,9 @@
 FROM php:7.4-fpm-buster
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
-ENV COMPOSER_ALLOW_SUPERUSER=1 \
-  COMPOSER_HOME=/composer
+ENV TZ=UTC \
+  COMPOSER_ALLOW_SUPERUSER=1 \
+  COMPOSER_HOME=/composer \
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
@@ -18,9 +19,7 @@ RUN apt-get update && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.jp
 
-RUN chmod 776 /var/run/php-fpm
-
-COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY ./infra/php2/php.ini /usr/local/etc/php/php.ini
 COPY ./laravel/ /work/laravel
 

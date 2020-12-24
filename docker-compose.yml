@@ -3,6 +3,7 @@ services:
   app:
     build: ./infra/php2/
     volumes:
+      - ./infra/php2/php-fpm.d:/var/run/php-fpm
       - ./laravel:/work
 
   web:
@@ -11,6 +12,7 @@ services:
     ports:
       - 80:80
     volumes:
+      - ./infra/php2/php-fpm.d:/var/run/php-fpm
       - ./laravel:/work
     working_dir: /laravel
 
