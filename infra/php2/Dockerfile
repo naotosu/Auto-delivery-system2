@@ -3,7 +3,7 @@ SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
 ENV TZ=UTC \
   COMPOSER_ALLOW_SUPERUSER=1 \
-  COMPOSER_HOME=/composer \
+  COMPOSER_HOME=/composer
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
@@ -26,5 +26,6 @@ COPY ./laravel/ /work/laravel
 RUN chmod -R 755 /work/laravel
 RUN chmod -R 755 /work/laravel/storage
 RUN chmod -R 755 /work/laravel/public
+
 
 WORKDIR /work/laravel
