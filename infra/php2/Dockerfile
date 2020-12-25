@@ -19,12 +19,12 @@ RUN apt-get update && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.jp
 
-COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY ./infra/php2/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./infra/php2/php.ini /usr/local/etc/php/php.ini
 COPY ./laravel/ /work/laravel
 
 RUN chmod -R 755 /work/laravel
-RUN chmod -R 755 /work/laravel/storage
+RUN chmod -R 777 /work/laravel/storage
 RUN chmod -R 755 /work/laravel/public
 
 
