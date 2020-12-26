@@ -1,0 +1,33 @@
+version: 1
+task_definition:
+  # Fargateを使用するのでネットワークモードにawsvpcを指定
+  ecs_network_mode: bridge
+  task_execution_role: ecsTaskExecutionRole
+
+  services:
+    app:
+      # System Managerのパラメーターストアから値を取得して環境変数にセット
+      # 予め設定をしておく必要がある
+      # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
+      mem_reservation: 256m
+      secrets:
+        - value_from: token_for_test
+          name: TOKEN
+
+    web:
+      # System Managerのパラメーターストアから値を取得して環境変数にセット
+      # 予め設定をしておく必要がある
+      # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
+      mem_reservation: 256m
+      secrets:
+        - value_from: token_for_test
+          name: TOKEN
+
+run_params:
+  network_configuration:
+    awsvpc_configuration:
+      subnets:
+        - $subnets
+      security_groups:
+        - $security_groups
+      assign_public_ip: ENABLED
