@@ -4,40 +4,22 @@ volumes:
 services:
   app:
     build: ./infra/php2/
+    image: $app_image
+    container_name: laravel-app/php-fpm:latest
+
     volumes:
       - php-fpm-socket:/var/run/php-fpm
       - ./laravel:/work/laravel/
-    image: 411782827307.dkr.ecr.ap-northeast-1.amazonaws.com/laravel-app/php-fpm:latest
-    container_name: laravel-app/php-fpm:latest
-    environment:
-      PRODUCTION: true
-    logging:
-      # CloudWatch Logsにログを書き込む
-      # FargateでECSを起動させるなら必須
-      driver: awslogs
-      options:
-        awslogs-group: /ecs/php-fpm
-        awslogs-region: ap-northeast-1
-        awslogs-stream-prefix: ecs
 
   web:
     build: ./infra/nginx/
-    image: nginx:1.18-alpine
+    image: nginx:1.17-alpine
     ports:
       - 80:80
+    image: $web_image
+    container_name: laravel-app/nginx:latest
+    
     volumes:
       - ./infra/php2/php-fpm.d:/var/run/php-fpm
       - ./backend:/work/backend
     working_dir: /laravel
-    image: 411782827307.dkr.ecr.ap-northeast-1.amazonaws.com/laravel-app/nginx:latest
-    container_name: laravel-app/nginx:latest
-    environment:
-      PRODUCTION: true
-    logging:
-      # CloudWatch Logsにログを書き込む
-      # FargateでECSを起動させるなら必須
-      driver: awslogs
-      options:
-        awslogs-group: /ecs/nginx
-        awslogs-region: ap-northeast-1
-        awslogs-stream-prefix: ecs
