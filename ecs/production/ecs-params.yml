@@ -1,17 +1,17 @@
 version: 1
 task_definition:
   ecs_network_mode: bridge
-  task_execution_role: auto-delivery-system_ecs
+  task_execution_role: auto-delivery-system
   task_size:
-    cpu_limit: 512
-    mem_limit: 512
+    cpu_limit: 1000
+    mem_limit: 1.0GB
 
   services:
     app:
       # System Managerのパラメーターストアから値を取得して環境変数にセット
       # 予め設定をしておく必要がある
       # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
-      mem_reservation: 256m
+      mem_reservation: 500MB
       secrets:
         - value_from: token_for_test
           name: TOKEN
@@ -20,7 +20,7 @@ task_definition:
       # System Managerのパラメーターストアから値を取得して環境変数にセット
       # 予め設定をしておく必要がある
       # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
-      mem_reservation: 256m
+      mem_reservation: 500MB
       secrets:
         - value_from: token_for_test
           name: TOKEN
@@ -29,7 +29,7 @@ run_params:
   network_configuration:
     awsvpc_configuration:
       subnets:
-        - 542b8e7f
+        - subnet-542b8e7f
       security_groups:
         - sg-067bac5287b13ae17
       assign_public_ip: ENABLED
