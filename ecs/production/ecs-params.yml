@@ -1,8 +1,10 @@
 version: 1
 task_definition:
-  # Fargateを使用するのでネットワークモードにawsvpcを指定
   ecs_network_mode: bridge
-  task_execution_role: ecsTaskExecutionRole
+  task_execution_role: auto-delivery-system_ecs
+  task_size:
+    cpu_limit: 512
+    mem_limit: 512
 
   services:
     app:
@@ -27,7 +29,7 @@ run_params:
   network_configuration:
     awsvpc_configuration:
       subnets:
-        - $subnets
+        - 542b8e7f
       security_groups:
-        - $security_groups
+        - sg-067bac5287b13ae17
       assign_public_ip: ENABLED
