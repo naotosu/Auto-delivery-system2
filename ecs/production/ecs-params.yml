@@ -4,26 +4,20 @@ task_definition:
   task_execution_role: auto-delivery-system
   task_size:
     cpu_limit: 1000
-    mem_limit: 1.0GB
+    mem_limit: 0.6GB
 
   services:
     app:
       # System Managerのパラメーターストアから値を取得して環境変数にセット
       # 予め設定をしておく必要がある
       # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
-      mem_reservation: 500MB
-      secrets:
-        - value_from: token_for_test
-          name: TOKEN
+      mem_reservation: 256MB
 
     web:
       # System Managerのパラメーターストアから値を取得して環境変数にセット
       # 予め設定をしておく必要がある
       # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
-      mem_reservation: 500MB
-      secrets:
-        - value_from: token_for_test
-          name: TOKEN
+      mem_reservation: 256MB
 
 run_params:
   network_configuration:
