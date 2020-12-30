@@ -3,21 +3,12 @@ task_definition:
   ecs_network_mode: bridge
   task_execution_role: auto-delivery-system
   task_size:
-    cpu_limit: 1000
-    mem_limit: 0.6GB
+    cpu_limit: 1024
+    mem_limit: 256
 
   services:
     app:
-      # System Managerのパラメーターストアから値を取得して環境変数にセット
-      # 予め設定をしておく必要がある
-      # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
-      mem_reservation: 256MB
-
-    web:
-      # System Managerのパラメーターストアから値を取得して環境変数にセット
-      # 予め設定をしておく必要がある
-      # ECSのマネジメントコンソールには環境変数名(TOKEN)とパラメーターキー(token_for_test)が表示される
-      mem_reservation: 256MB
+      essential: true
 
 run_params:
   network_configuration:
