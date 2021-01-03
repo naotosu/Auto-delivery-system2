@@ -1,7 +1,7 @@
 version: 1
 task_definition:
   ecs_network_mode: bridge
-  task_execution_role: auto-delivery-system
+  task_execution_role: ecs-admin-role
   task_size:
     cpu_limit: 512
     mem_limit: 256
@@ -14,7 +14,7 @@ run_params:
   network_configuration:
     awsvpc_configuration:
       subnets:
-        - subnet-542b8e7f
+        - subnet-0413544c346237552
       security_groups:
         - sg-067bac5287b13ae17
       assign_public_ip: ENABLED
