@@ -9,6 +9,79 @@ task_definition:
   services:
     app:
       essential: true
+      secrets:
+        - value_from: /ads/production/APP_DEBUG
+          name: APP_DEBUG
+        - value_from: /ads/production/APP_ENV
+          name: APP_ENV
+        - value_from: /ads/production/APP_KEY
+          name: APP_KEY
+        - value_from: /ads/production/APP_NAME
+          name: APP_NAME
+        - value_from: /ads/production/APP_URL
+          name: APP_URL
+        - value_from: /ads/production/AWS_DEFAULT_REGION
+          name: AWS_DEFAULT_REGION
+        - value_from: /ads/production/AWS_USERNAME
+          name: AWS_USERNAME
+        - value_from: /ads/production/BROADCAST_DRIVER
+          name: BROADCAST_DRIVER
+        - value_from: /ads/production/CACHE_DRIVER
+          name: CACHE_DRIVER
+        - value_from: /ads/production/DB_CONNECTION
+          name: DB_CONNECTION
+        - value_from: /ads/production/DB_DATABASE
+          name: DB_DATABASE
+        - value_from: /ads/production/DB_HOST
+          name: DB_HOST
+        - value_from: /ads/production/DB_PASSWORD
+          name: DB_PASSWORD
+        - value_from: /ads/production/DB_PORT
+          name: DB_PORT
+        - value_from: /ads/production/DB_USERNAME
+          name: DB_USERNAME
+        - value_from: /ads/production/ECR_ADDRESS
+          name: ECR_ADDRESS
+        - value_from: /ads/production/GOOGLE_CALENDAR_ID
+          name: GOOGLE_CALENDAR_ID
+        - value_from: /ads/production/LOG_CHANNEL
+          name: LOG_CHANNEL
+        - value_from: /ads/production/MAIL_DRIVER
+          name: MAIL_DRIVER
+        - value_from: /ads/production/MAIL_ENCRYPTION
+          name: MAIL_ENCRYPTION
+        - value_from: /ads/production/MAIL_FROM_ADDRESS
+          name: MAIL_FROM_ADDRESS
+        - value_from: /ads/production/MAIL_FROM_NAME
+          name: MAIL_FROM_NAME
+        - value_from: /ads/production/MAIL_HOST
+          name: MAIL_HOST
+        - value_from: /ads/production/MAIL_MAILER
+          name: MAIL_MAILER
+        - value_from: /ads/production/MAIL_PASSWORD
+          name: MAIL_PASSWORD
+        - value_from: /ads/production/MAIL_PORT
+          name: MAIL_PORT
+        - value_from: /ads/production/MAIL_USERNAME
+          name: MAIL_USERNAME
+        - value_from: /ads/production/MIX_PUSHER_APP_CLUSTER
+          name: MIX_PUSHER_APP_CLUSTER
+        - value_from: /ads/production/MIX_PUSHER_APP_KEY
+          name: MIX_PUSHER_APP_KEY
+        - value_from: /ads/production/PUSHER_APP_CLUSTER
+          name: PUSHER_APP_CLUSTER
+        - value_from: /ads/production/QUEUE_CONNECTION
+          name: QUEUE_CONNECTION
+        - value_from: /ads/production/REDIS_HOST
+          name: REDIS_HOST
+        - value_from: /ads/production/REDIS_PASSWORD
+          name: REDIS_PASSWORD
+        - value_from: /ads/production/REDIS_PORT
+          name: REDIS_PORT
+        - value_from: /ads/production/SESSION_DRIVER
+          name: SESSION_DRIVER
+        - value_from: /ads/production/SESSION_LIFETIME
+          name: SESSION_LIFETIME
 
 run_params:
   network_configuration:
@@ -18,77 +91,3 @@ run_params:
       security_groups:
         - sg-067bac5287b13ae17
       assign_public_ip: ENABLED
-
-secrets:
-- value_from: /ads/production/APP_DEBUG
-  name: APP_DEBUG
-- value_from: /ads/production/APP_ENV
-  name: APP_ENV
-- value_from: /ads/production/APP_KEY
-  name: APP_KEY
-- value_from: /ads/production/APP_NAME
-  name: APP_NAME
-- value_from: /ads/production/APP_URL
-  name: APP_URL
-- value_from: /ads/production/AWS_DEFAULT_REGION
-  name: AWS_DEFAULT_REGION
-- value_from: /ads/production/AWS_USERNAME
-  name: AWS_USERNAME
-- value_from: /ads/production/BROADCAST_DRIVER
-  name: BROADCAST_DRIVER
-- value_from: /ads/production/CACHE_DRIVER
-  name: CACHE_DRIVER
-- value_from: /ads/production/DB_CONNECTION
-  name: DB_CONNECTION
-- value_from: /ads/production/DB_DATABASE
-  name: DB_DATABASE
-- value_from: /ads/production/DB_HOST
-  name: DB_HOST
-- value_from: /ads/production/DB_PASSWORD
-  name: DB_PASSWORD
-- value_from: /ads/production/DB_PORT
-  name: DB_PORT
-- value_from: /ads/production/DB_USERNAME
-  name: DB_USERNAME
-- value_from: /ads/production/ECR_ADDRESS
-  name: ECR_ADDRESS
-- value_from: /ads/production/GOOGLE_CALENDAR_ID
-  name: GOOGLE_CALENDAR_ID
-- value_from: /ads/production/LOG_CHANNEL
-  name: LOG_CHANNEL
-- value_from: /ads/production/MAIL_DRIVER
-  name: MAIL_DRIVER
-- value_from: /ads/production/MAIL_ENCRYPTION
-  name: MAIL_ENCRYPTION
-- value_from: /ads/production/MAIL_FROM_ADDRESS
-  name: MAIL_FROM_ADDRESS
-- value_from: /ads/production/MAIL_FROM_NAME
-  name: MAIL_FROM_NAME
-- value_from: /ads/production/MAIL_HOST
-  name: MAIL_HOST
-- value_from: /ads/production/MAIL_MAILER
-  name: MAIL_MAILER
-- value_from: /ads/production/MAIL_PASSWORD
-  name: MAIL_PASSWORD
-- value_from: /ads/production/MAIL_PORT
-  name: MAIL_PORT
-- value_from: /ads/production/MAIL_USERNAME
-  name: MAIL_USERNAME
-- value_from: /ads/production/MIX_PUSHER_APP_CLUSTER
-  name: MIX_PUSHER_APP_CLUSTER
-- value_from: /ads/production/MIX_PUSHER_APP_KEY
-  name: MIX_PUSHER_APP_KEY
-- value_from: /ads/production/PUSHER_APP_CLUSTER
-  name: PUSHER_APP_CLUSTER
-- value_from: /ads/production/QUEUE_CONNECTION
-  name: QUEUE_CONNECTION
-- value_from: /ads/production/REDIS_HOST
-  name: REDIS_HOST
-- value_from: /ads/production/REDIS_PASSWORD
-  name: REDIS_PASSWORD
-- value_from: /ads/production/REDIS_PORT
-  name: REDIS_PORT
-- value_from: /ads/production/SESSION_DRIVER
-  name: SESSION_DRIVER
-- value_from: /ads/production/SESSION_LIFETIME
-  name: SESSION_LIFETIME
