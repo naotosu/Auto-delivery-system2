@@ -4,7 +4,6 @@ volumes:
 services:
   app:
     image: 411782827307.dkr.ecr.ap-northeast-1.amazonaws.com/laravel-app/php-fpm:latest
-    container_name: laravel-app/php-fpm:latest
 
     logging:
       driver: awslogs
@@ -20,7 +19,6 @@ services:
     ports:
       - 80:80
     image: 411782827307.dkr.ecr.ap-northeast-1.amazonaws.com/laravel-app/nginx:latest
-    container_name: laravel-app/nginx:latest
 
     logging:
       driver: awslogs
@@ -31,4 +29,3 @@ services:
     
     volumes:
       - php-fpm-socket:/var/run/php-fpm
-    working_dir: /laravel
