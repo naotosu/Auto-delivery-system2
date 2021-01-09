@@ -18,3 +18,5 @@ COPY ./infra/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY ./laravel/ /work/laravel
 
 WORKDIR /work/laravel
+
+CMD php artisan schedule:run
