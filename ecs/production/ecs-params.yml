@@ -86,6 +86,22 @@ task_definition:
         # - value_from: /ads/production/SESSION_LIFETIME
         #   name: SESSION_LIFETIME
 
+    task:
+      essential: true
+      secrets:
+        - value_from: /ads/production/DB_CONNECTION
+          name: DB_CONNECTION
+        - value_from: /ads/production/DB_DATABASE
+          name: DB_DATABASE
+        - value_from: /ads/production/DB_HOST
+          name: DB_HOST
+        - value_from: /ads/production/DB_PASSWORD
+          name: DB_PASSWORD
+        - value_from: /ads/production/DB_PORT
+          name: DB_PORT
+        - value_from: /ads/production/DB_USERNAME
+          name: DB_USERNAME
+
 run_params:
   network_configuration:
     awsvpc_configuration:

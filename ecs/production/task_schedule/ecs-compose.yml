@@ -1,6 +1,5 @@
 version: "3"
-volumes:
-  php-fpm-socket:
+
 services:
   task:
     image: 411782827307.dkr.ecr.ap-northeast-1.amazonaws.com/laravel-app/php-fpm:latest
@@ -11,8 +10,5 @@ services:
         awslogs-group: /ecs/auto-delivery-system/php-fpm/task
         awslogs-region: ap-northeast-1
         awslogs-stream-prefix: php-fpm/task
-
-    volumes:
-      - php-fpm-socket:/var/run/php-fpm
 
     command: php artisan command:auto_delivery
