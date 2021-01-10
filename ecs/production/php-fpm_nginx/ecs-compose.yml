@@ -17,7 +17,7 @@ services:
 
   web:
     ports:
-      - 0:443
+      - 0:80
     image: 411782827307.dkr.ecr.ap-northeast-1.amazonaws.com/laravel-app/nginx:latest
 
     logging:
