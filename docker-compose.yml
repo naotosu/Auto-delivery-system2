@@ -1,23 +1,29 @@
 version: "3"
 services:
   app:
-    build: ./infra/php2/
+    build:
+      context: .
+      dockerfile: ./infra/php2/Dockerfile
     volumes:
       - ./infra/php2/php-fpm.d:/var/run/php-fpm
-      - ./laravel:/work
+      - ./laravel:/work/laravel
 
   web:
-    build: ./infra/nginx/
+    build:
+      context: .
+      dockerfile: ./infra/nginx/Dockerfile
     image: nginx:1.18-alpine
     ports:
       - 80:80
     volumes:
       - ./infra/php2/php-fpm.d:/var/run/php-fpm
-      - ./laravel:/work
-    working_dir: /laravel
+      - ./laravel:/work/laravel
+    working_dir: /work/laravel
 
   db:
-    build: ./infra/mysql
+    build:
+      context: .
+      dockerfile: ./infra/mysql/Dockerfile
     volumes:
       - db-store:/var/lib/mysql
 
