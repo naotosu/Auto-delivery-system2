@@ -35,7 +35,7 @@
             <ul>
               <li>出荷指示</li>
             </ul>
-            <img src="{{ asset('/Image/isogashii_woman.png' }}" class = "img">
+            <img src="{{ asset('/Image/isogashii_woman.png') }}" class = "img">
           </div>
         </div>
       
