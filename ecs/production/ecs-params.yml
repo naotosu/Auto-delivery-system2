@@ -27,8 +27,6 @@ task_definition:
 
         # - value_from: /ads/production/APP_DEBUG
         #   name: APP_DEBUG
-        # - value_from: /ads/production/APP_ENV
-        #   name: APP_ENV
         # - value_from: /ads/production/APP_KEY
         #   name: APP_KEY
         # - value_from: /ads/production/APP_NAME

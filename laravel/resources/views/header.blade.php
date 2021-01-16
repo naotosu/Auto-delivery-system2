@@ -6,32 +6,32 @@
           <ul>
             <div class="icon">
             <li>
-              <a href="/">TOP</a>
+              <a href="{{ url('/') }}">TOP</a>
             </li>
             </div>
             <div class="icon">
             <li>
-              <a href="/csv_imports">CSVデータ登録</a>
+              <a href="{{ url('/csv_imports') }}">CSVデータ登録</a>
             </li>
             </div>
             <div class="icon">
             <li>            
-              <a href="/orders">注文データ照会</a>
+              <a href="{{ url('/orders') }}">注文データ照会</a>
             </li>
             </div>
             <div class="icon"> 
             <li>
-              <a href="/inventories">在庫一覧・出荷実績</a>
+              <a href="{{ url('/inventories') }}">在庫一覧・出荷実績</a>
             </li>
             </div>
             <div class="icon">
             <li>
-              <a href="/shipment/temporaries">臨時出荷指示</a>
+              <a href="{{ url('/shipment/temporaries') }}">臨時出荷指示</a>
             </li>
             </div>
             <div class="icon">
             <li>
-              <a href="/inventory/shipment/cancels">出荷指示取消</a>
+              <a href="{{ url('/inventory/shipment/cancels') }}">出荷指示取消</a>
             </li>
             </div>
           </ul>

@@ -15,6 +15,8 @@ services:
     volumes:
       - php-fpm-socket:/var/run/php-fpm
 
+    env_file: .env.production
+
   web:
     ports:
       - 0:80

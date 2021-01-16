@@ -40,10 +40,14 @@ class AutoDeliveryCommand extends Command
      */
     public function handle()
     {
-        $app_env = config('app.env');
+        $app_env = env('APP_ENV');
         
-        // heroku用スタート
-        if ($app_env == 'heroku') {
+        if (empty($app_env)) {
+            $app_env = config('app.env');
+        }
+              
+        // production用スタート
+        if ($app_env == 'production') {
             
             $saturday = \Config::get('const.Constant.saturday');
             $sunday = \Config::get('const.Constant.sunday');
@@ -65,10 +69,10 @@ class AutoDeliveryCommand extends Command
             }
 
             $ship_date = $ship_date->toDateString();
-            // heroku用終了
+            // heroku ECS用終了
 
-        //ローカル用　aws用
-        } elseif ($app_env == 'local' || $app_env == 'production') {
+        //ローカル用
+        } elseif ($app_env == 'local') {
             $ship_date = $this->argument("ship_date");
         }
         
