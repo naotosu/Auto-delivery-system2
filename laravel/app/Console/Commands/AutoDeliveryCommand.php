@@ -40,10 +40,8 @@ class AutoDeliveryCommand extends Command
      */
     public function handle()
     {
-        //$app_env = env('APP_ENV');
+        $app_env = env('APP_ENV');
         //TODO 環境変数の読み取り確認
-
-        $app_env = 'production';
         
         if (empty($app_env)) {
             $app_env = config('app.env');

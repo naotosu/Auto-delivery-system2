@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['scheme' => 'https'], function () {
-    Route::get('/', 'TopController@index');
-});
+Route::get('/', 'TopController@index');
 
 Route::get('/csv_imports', 'TopController@csv_imports');
 
