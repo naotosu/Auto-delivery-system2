@@ -41,14 +41,13 @@ class AutoDeliveryCommand extends Command
     public function handle()
     {
         $app_env = env('APP_ENV');
-        //TODO 環境変数の読み取り確認
         
         if (empty($app_env)) {
             $app_env = config('app.env');
         }
               
         // heroku ECS用スタート
-        if ($app_env == 'heroku' || $app_env == 'production') {
+        if ($app_env == 'production') {
             
             $saturday = \Config::get('const.Constant.saturday');
             $sunday = \Config::get('const.Constant.sunday');
