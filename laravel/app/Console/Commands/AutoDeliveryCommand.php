@@ -46,7 +46,7 @@ class AutoDeliveryCommand extends Command
             $app_env = config('app.env');
         }
               
-        // heroku ECS用スタート
+        // production用スタート
         if ($app_env == 'production') {
             
             $saturday = \Config::get('const.Constant.saturday');
