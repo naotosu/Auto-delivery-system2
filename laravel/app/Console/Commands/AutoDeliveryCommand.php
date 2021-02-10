@@ -45,6 +45,9 @@ class AutoDeliveryCommand extends Command
         if (empty($app_env)) {
             $app_env = config('app.env');
         }
+
+        //TODO 何故かenv productionを認識しないため、暫定対応
+        $app_env = 'production';
               
         // production用スタート
         if ($app_env == 'production') {
@@ -74,6 +77,10 @@ class AutoDeliveryCommand extends Command
         //ローカル用
         } elseif ($app_env == 'local') {
             $ship_date = $this->argument("ship_date");
+
+        //デバッグ用 producitonでもlocalでも無い場合は場合は今日を返す
+        } else {
+            $ship_date = \Carbon\Carbon::today();
         }
         
         $order_indexes = OrderItem::SearchByShipDate($ship_date)->get();
