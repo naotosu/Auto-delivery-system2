@@ -5,10 +5,8 @@
   <div class="top-page">
     <div class="top_title">
       <h1>オートデリバリーシステム　TOP</h1>
-      <h2>毎朝の事務作業から解放されるシステム　倉庫業様、商社様に！</h2>
-      <h2>その効果は・・・・</h2>
+      <h2>毎朝の事務作業から解放されるシステム</h2>
       <img src="{{ asset('/Image/under.png') }}" class="top_arrow">
-      <h2>私の現職であれば、3時間/日　× 10人　× 20日間　＝　600時間の改善！</h2>
     </div>
 
        
